@@ -1,0 +1,27 @@
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\bin\Debug\TTSVoice.dll
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\bin\Debug\TTSVoice.pdb
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\bin\Debug\Dos.Common.dll
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\bin\Debug\Dos.Common.pdb
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\bin\Debug\Dos.Common.xml
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\bin\Debug\ICSharpCode.SharpZipLib.pdb
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\bin\Debug\ICSharpCode.SharpZipLib.xml
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\obj\Debug\TTSVoice.csprojAssemblyReference.cache
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\obj\Debug\TTSVoice.csproj.CoreCompileInputs.cache
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\obj\Debug\TTSVoice.csproj.CopyComplete
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\obj\Debug\TTSVoice.dll
+D:\work2\pfsnew\tts_pfs_csharp\TTSVoice\obj\Debug\TTSVoice.pdb
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\bin\Debug\TTSVoice.dll
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\bin\Debug\TTSVoice.pdb
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\bin\Debug\Dos.Common.dll
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\bin\Debug\NAudio.dll
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\bin\Debug\Dos.Common.pdb
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\bin\Debug\Dos.Common.xml
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\bin\Debug\NAudio.xml
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\bin\Debug\ICSharpCode.SharpZipLib.pdb
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\bin\Debug\ICSharpCode.SharpZipLib.xml
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\obj\Debug\TTSVoice.csprojAssemblyReference.cache
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\obj\Debug\TTSVoice.csproj.CopyComplete
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\obj\Debug\TTSVoice.dll
+C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\obj\Debug\TTSVoice.pdb

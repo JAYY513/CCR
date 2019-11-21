@@ -1,0 +1,14 @@
+D:\work\local\Developers.UI\JLib\bin\Debug\JLib.dll
+D:\work\local\Developers.UI\JLib\bin\Debug\JLib.pdb
+D:\work\local\Developers.UI\JLib\obj\Debug\JLib.Properties.Resources.resources
+D:\work\local\Developers.UI\JLib\obj\Debug\JLib.csproj.GenerateResource.cache
+D:\work\local\Developers.UI\JLib\obj\Debug\JLib.dll
+D:\work\local\Developers.UI\JLib\obj\Debug\JLib.pdb
+D:\work\local\Developers.UI\JLib\obj\Debug\JLib.csprojAssemblyReference.cache
+D:\work\local\CCRMain\Source\CCRMain\JLib\bin\Debug\JLib.dll
+D:\work\local\CCRMain\Source\CCRMain\JLib\bin\Debug\JLib.pdb
+D:\work\local\CCRMain\Source\CCRMain\JLib\obj\Debug\JLib.csprojAssemblyReference.cache
+D:\work\local\CCRMain\Source\CCRMain\JLib\obj\Debug\JLib.Properties.Resources.resources
+D:\work\local\CCRMain\Source\CCRMain\JLib\obj\Debug\JLib.csproj.GenerateResource.cache
+D:\work\local\CCRMain\Source\CCRMain\JLib\obj\Debug\JLib.dll
+D:\work\local\CCRMain\Source\CCRMain\JLib\obj\Debug\JLib.pdb

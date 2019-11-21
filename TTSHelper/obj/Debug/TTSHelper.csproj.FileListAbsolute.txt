@@ -1,0 +1,14 @@
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\obj\Debug\TTSHelper.csprojAssemblyReference.cache
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\bin\Debug\TTSHelper.dll
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\bin\Debug\TTSHelper.pdb
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\bin\Debug\Dos.Common.dll
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\bin\Debug\Dos.Common.pdb
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\bin\Debug\ICSharpCode.SharpZipLib.pdb
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\bin\Debug\ICSharpCode.SharpZipLib.xml
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\obj\Debug\TTSHelper.csproj.CopyComplete
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\obj\Debug\TTSHelper.dll
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\obj\Debug\TTSHelper.pdb
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\bin\Debug\Newtonsoft.Json.dll
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\bin\Debug\Newtonsoft.Json.xml
+D:\work\local\CCRMain\Source\CCRMain\TTSHelper\bin\Debug\Dos.Common.xml
