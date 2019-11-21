@@ -14,6 +14,7 @@ namespace CCRMain.ViewModels
         private bool _isSelectedEmptyTables;
         private bool _isSelectedHallTablesType;
         private bool _isSelectedUsingTables;
+        private bool _isSelectedUsingTables2;
         private ObservableCollection<TableModel> _selectedtableModels = new ObservableCollection<TableModel>();
         private ObservableCollection<TableGroupModel> _tableGroupModel = new ObservableCollection<TableGroupModel>();
         private ObservableCollection<TableModel> tableModels = new ObservableCollection<TableModel>();

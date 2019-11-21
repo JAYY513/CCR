@@ -18,8 +18,6 @@ namespace CCRMain
         public MainWindow()
         {
             InitializeComponent();
-           
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -49,7 +47,7 @@ namespace CCRMain
             Task.Factory.StartNew(() =>
             {
                 var image = LoginApi.GetCodeUrlStream();
-              
+
                 this.Dispatcher.Invoke(() =>
                 {
                     try
@@ -61,12 +59,10 @@ namespace CCRMain
                         bitmapImage.EndInit();
                         codeImg.Source = bitmapImage;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
-
                     }
                 });
-
             });
         }
     }
