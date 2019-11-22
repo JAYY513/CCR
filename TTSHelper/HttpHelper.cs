@@ -112,7 +112,8 @@ namespace TTSHelper
             catch (WebException ex)
             {
                 MessageBox.Show(ex.Message);
-                MessageBox.Show(new StreamReader(ex.Response.GetResponseStream()).ReadToEnd());
+                if (ex.Response != null)
+                    MessageBox.Show(new StreamReader(ex.Response.GetResponseStream()).ReadToEnd());
                 return "";
             }
         }

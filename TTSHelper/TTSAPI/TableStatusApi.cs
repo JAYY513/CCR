@@ -128,12 +128,11 @@ namespace TTSHelper.TTSAPI
             var a = HttpHelper.Post(@"table/queryNum");
         }
 
-        public static void ChangeLineUp(string lid, string tid, string type)
+        public static void ChangeLineUp(string lid,  string type)
         {
             var a = HttpHelper.Post(@"table/changeLineUp", new
             {
                 lid = lid,
-                tid = tid,
                 type = type
             });
         }

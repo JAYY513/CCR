@@ -40,15 +40,18 @@
                                 Padding="{TemplateBinding Padding}">
                         </Border>
                         <ContentPresenter x:Name="Content" ContentSource="Header" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-                        <TextBlock Text="{Binding Headcount}" Name="tb" Foreground="Black" HorizontalAlignment="Right" FontSize="9" Margin="0 0 9 0"></TextBlock>
+                        <Border Width="24" Height="24" Name="bd" CornerRadius="21" Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(assist:BackgroundAP.Background)}" Margin="0 0 9 30" HorizontalAlignment="Right" >
+                        <TextBlock Text="{Binding total}" Name="tb" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Foreground="White" ></TextBlock>
+                        </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
 
                         <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Background" Value="White" TargetName="bd"/>
                             <Setter Property="Panel.ZIndex" Value="1" />
                             <Setter Property="Visibility" TargetName="ActiveBd" Value="Visible" />
                             <Setter Property="Foreground" Value="White" />
-                            <Setter Property="Foreground" TargetName="tb" Value="White" />
+                            <Setter Property="Foreground" TargetName="tb" Value="#3D8BFF" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>

@@ -40,5 +40,26 @@ namespace JControls.AttachedProperty
             DependencyProperty.RegisterAttached("CornerRadius", typeof(Thickness), typeof(ControlAttachProperty), new PropertyMetadata(default(Thickness)));
 
         #endregion CornerRadius
+
+        #region string
+
+
+
+        public static string GetString(DependencyObject obj)
+        {
+            return (string)obj.GetValue(StringProperty);
+        }
+
+        public static void SetString(DependencyObject obj, string value)
+        {
+            obj.SetValue(StringProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for String.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StringProperty =
+            DependencyProperty.RegisterAttached("String", typeof(string), typeof(ControlAttachProperty), new PropertyMetadata(""));
+
+
+        #endregion string
     }
 }

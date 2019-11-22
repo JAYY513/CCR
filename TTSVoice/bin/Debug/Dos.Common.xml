@@ -425,7 +425,7 @@
             <param name="SearchPattern"></param>
             <returns></returns>
         </member>
-        <!-- 对于成员“M:Dos.Common.Helper.FtpHelper.MakeDir(System.String,System.String,System.String,System.String,System.Int32)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Dos.Common.Helper.FtpHelper.MakeDir(System.String,System.String,System.String,System.String,System.Int32)" -->
         <member name="M:Dos.Common.Helper.FtpHelper.delFile(System.String,System.String,System.String,System.String,System.String)">
             <summary>
             删除文件
@@ -984,7 +984,7 @@
             通用转换类
             </summary>
         </member>
-        <!-- 对于成员“M:Dos.Common.ConvertHelper.EnumToDictionary(System.Type)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Dos.Common.ConvertHelper.EnumToDictionary(System.Type)" -->
         <member name="T:Dos.Common.CookieHelper">
             <summary>
             Cookie操作类
@@ -2207,7 +2207,7 @@
             Mapper for classes
             </summary>
         </member>
-        <!-- 对于成员“T:EmitMapper.Mappers.MapperForCollectionImpl”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "T:EmitMapper.Mappers.MapperForCollectionImpl" -->
         <member name="M:EmitMapper.Mappers.MapperForCollectionImpl.MapImpl(System.Object,System.Object,System.Object)">
             <summary>
             Copies object properties and members of "from" to object "to"

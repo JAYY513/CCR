@@ -64,19 +64,21 @@ namespace JControls
                 SelectedItem = null;
                 return; 
             }
-            List<List<object>> lists = new List<List<object>>();
+            tempLists.Clear();
             for (int i = 0; i < tempItemsSourceList.Count; i++)
             {
                 if (i % MaxPageSize == 0)
                 {
-                    lists.Add(new List<object>());
+                    tempLists.Add(new List<object>());
                 }
-                lists.Last().Add(tempItemsSourceList[i]);
+                tempLists.Last().Add(tempItemsSourceList[i]);
             }
-            if (pageIndex > lists.Count - 1) pageIndex = lists.Count - 1;
+            if (pageIndex > tempLists.Count - 1) pageIndex = tempLists.Count - 1;
             else if (pageIndex < 0) pageIndex = 0;
-            SelectedItem = lists[pageIndex];
+            SelectedItem = tempLists[pageIndex];
         }
+        List<List<object>> tempLists = new List<List<object>>();
+
 
         private static void OnItemSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -114,7 +116,7 @@ namespace JControls
 
         private void RightClick(object sender, RoutedEventArgs e)
         {
-            if (PageIndex < tempItemsSourceList.Count - 1)
+            if (PageIndex < tempLists.Count - 1)
                 PageIndex += 1;
         }
     }

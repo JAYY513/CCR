@@ -86,6 +86,7 @@
     <Compile Include="Models\TableLineUp.cs" />
     <Compile Include="Models\TableModel.cs" />
     <Compile Include="SendData\SendData.cs" />
+    <Compile Include="Tools\SpeechAPI.cs" />
     <Compile Include="ViewModels\CallNumberViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLoctor.cs" />
     <Compile Include="Views\CallNumber.xaml.cs">
@@ -159,6 +160,10 @@
     <ProjectReference Include="..\TTSHelper\TTSHelper.csproj">
       <Project>{3258692d-3b5a-41bf-9846-267990e43542}</Project>
       <Name>TTSHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TTSVoice\TTSVoice.csproj">
+      <Project>{3d581db2-579e-4082-a471-c74973c15fd2}</Project>
+      <Name>TTSVoice</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

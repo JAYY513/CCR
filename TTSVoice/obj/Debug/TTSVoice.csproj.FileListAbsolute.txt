@@ -25,3 +25,17 @@ C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\obj\
 C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\obj\Debug\TTSVoice.csproj.CopyComplete
 C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\obj\Debug\TTSVoice.dll
 C:\Users\Administrator\Documents\Tencent Files\1961298841\FileRecv\TTSVoice\obj\Debug\TTSVoice.pdb
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\obj\Debug\TTSVoice.csprojAssemblyReference.cache
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\obj\Debug\TTSVoice.dll
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\obj\Debug\TTSVoice.pdb
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\bin\Debug\TTSVoice.dll
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\bin\Debug\TTSVoice.pdb
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\bin\Debug\Dos.Common.dll
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\bin\Debug\NAudio.dll
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\bin\Debug\Dos.Common.pdb
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\bin\Debug\Dos.Common.xml
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\bin\Debug\NAudio.xml
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\bin\Debug\ICSharpCode.SharpZipLib.pdb
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\bin\Debug\ICSharpCode.SharpZipLib.xml
+D:\work\local\CCRMain\Source\CCRMain\TTSVoice\obj\Debug\TTSVoice.csproj.CopyComplete

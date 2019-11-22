@@ -40,6 +40,9 @@ namespace CCRMain.Views
         private void nkb_OnLineUp(string number)
         {
             TableStatusApi2.TryTableLineUp(number, out TableLineUp tableLineUp, out _);
+           
+            var item = TableStatusApi.QueryLineUp<LineUpGroup>("");//TableStatusApi.QueryLineUp<LineUpGroup>(tempSelectedIndex == 0 ? "1-4" : tempSelectedIndex == 1 ? "5-7" : tempSelectedIndex == 2 ? "8-20" : "");
+            ViewModels.ViewModelLoctor.CallNumberViewModel.RefreshLineUpGroup(item, 3);
         }
 
         private void TabControl_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
@@ -55,7 +58,8 @@ namespace CCRMain.Views
             if (selectedIndex == -1) return;
             if (tempSelectedIndex == selectedIndex) return;
             tempSelectedIndex = selectedIndex;
-            ViewModels.ViewModelLoctor.CallNumberViewModel.RefreshLineUpGroup(TableStatusApi.QueryLineUp<LineUpGroup>(selectedIndex == 0 ? "1-4" : selectedIndex == 1 ? "5-8" : selectedIndex == 2 ? "8-20" : "全部"));
+            var item = TableStatusApi.QueryLineUp<LineUpGroup>(selectedIndex == 0 ? "1-4" : selectedIndex == 1 ? "5-7" : selectedIndex == 2 ? "8-20" : "");
+            ViewModels.ViewModelLoctor.CallNumberViewModel.RefreshLineUpGroup(item, selectedIndex);
         }
     }
 }

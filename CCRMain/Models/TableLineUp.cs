@@ -9,11 +9,11 @@ namespace CCRMain.Models
 {
     public class TableLineUp : BindableBase
     {/// <summary>
-     /// 
+     /// 座号ID
      /// </summary>
         public string lineUpNumber { get; set; }
         /// <summary>
-        /// 
+        /// 排号ID
         /// </summary>
         public int number { get; set; }
         /// <summary>

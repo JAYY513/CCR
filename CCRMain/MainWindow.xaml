@@ -4,45 +4,50 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:CCRMain"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:local="clr-namespace:CCRMain" FontSize="21"
+        mc:Ignorable="d" ResizeMode="CanMinimize" WindowState="Maximized"
+        Title="MainWindow" Height="1080" Width="1920">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="3" />
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid HorizontalAlignment="Center" Width="210" VerticalAlignment="Center">
+        <Grid HorizontalAlignment="Right" Width="500" VerticalAlignment="Center" Margin="0 0 21 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="AUTO"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="90"></RowDefinition>
+                <RowDefinition Height="90"></RowDefinition>
+                <RowDefinition Height="90"></RowDefinition>
+                <RowDefinition Height="90"></RowDefinition>
+                <RowDefinition Height="90"></RowDefinition>
+                <RowDefinition Height="90"></RowDefinition>
             </Grid.RowDefinitions>
-            <wpf:PackIcon Kind="Account" VerticalAlignment="Center"></wpf:PackIcon>
-            <TextBox Grid.Column="1" Name="user">123456789123456</TextBox>
+            <wpf:PackIcon Kind="Account" VerticalAlignment="Center" Height="51" Width="51"></wpf:PackIcon>
+            <TextBox Grid.Column="1" Name="user" VerticalContentAlignment="Center" Margin="0 6">123456789123456</TextBox>
 
-            <wpf:PackIcon Kind="Lock" Grid.Row="1" VerticalAlignment="Center"></wpf:PackIcon>
-            <TextBox Grid.Column="1" Grid.Row="1" Name="pwd">123456</TextBox>
+            <wpf:PackIcon Kind="Lock" Grid.Row="1" VerticalAlignment="Center" Height="51" Width="51"></wpf:PackIcon>
+            <TextBox Grid.Column="1" Grid.Row="1" Name="pwd" VerticalContentAlignment="Center" Margin="0 6">123456</TextBox>
 
-            <wpf:PackIcon Kind="Abc" Grid.Row="2" VerticalAlignment="Center"></wpf:PackIcon>
-            <TextBox Grid.Column="1" Grid.Row="2" Name="employeeAccount">12345678</TextBox>
+            <wpf:PackIcon Kind="Abc" Grid.Row="2" VerticalAlignment="Center" Height="51" Width="51"></wpf:PackIcon>
+            <TextBox Grid.Column="1" Grid.Row="2" Name="employeeAccount" VerticalContentAlignment="Center" Margin="0 6">12345678</TextBox>
 
-            <wpf:PackIcon Kind="CodeString" Grid.Row="3" VerticalAlignment="Center"></wpf:PackIcon>
-            <TextBox Grid.Column="1" Grid.Row="3" Name="code"></TextBox>
-            <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Height="30" Margin="3" HorizontalAlignment="Center" Orientation="Horizontal">
-                <Image Width="69" Name="codeImg"></Image>
-                <Button Click="RefreshCodeClick">获取验证码</Button>
+            <wpf:PackIcon Kind="CodeString" Grid.Row="3" VerticalAlignment="Center" Height="51" Width="51"></wpf:PackIcon>
+            <TextBox Grid.Column="1" Grid.Row="3" Name="code" VerticalContentAlignment="Center" Margin="0 6"></TextBox>
+            <StackPanel Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="120 0 0 0" Orientation="Horizontal">
+                <!--</Image>-->
+                <TextBlock VerticalAlignment="Center" Padding="0">验证码</TextBlock>
+                <Grid Width="130" Height="51" PreviewMouseDown="codeImg_MouseDown" VerticalAlignment="Center" Cursor="Hand">
+                    <Label HorizontalContentAlignment="Center" BorderThickness="1" BorderBrush="Black" VerticalContentAlignment="Center" Margin="9  1 1 1" Padding="3 0" >刷新验证码</Label>
+                    <Image  Name="codeImg" Stretch="Fill"/>
+                </Grid>
+                <!--<Button Click="RefreshCodeClick" Name="CodeButton" Height="51" Style="{StaticResource  Default.Button.Border.Style1}"></Button>-->
             </StackPanel>
-            <Button Grid.Row="5" Grid.ColumnSpan="2"  Content="Button" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="Button_Click" />
+            <Button Grid.Row="5" Grid.ColumnSpan="2"  Content="登录" IsDefault="True" HorizontalAlignment="Stretch" Height="51" VerticalAlignment="Top"  Click="Button_Click" />
         </Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="589,94,0,0" VerticalAlignment="Top" Width="75" Click="CallNumber_Click" />
+        <Button Content="Button" Visibility="Collapsed" HorizontalAlignment="Left" Margin="589,94,0,0" VerticalAlignment="Top" Width="75" Click="CallNumber_Click" />
     </Grid>
 </Window>

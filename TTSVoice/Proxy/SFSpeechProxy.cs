@@ -25,7 +25,7 @@ namespace TTSVoice.Proxy
             });
         }
 
-        public void CallTableNumeric(int queueNum)
+        public void CallTableNumeric(string queueNum)
         {
             SFSpeech.AddBlocks(new List<Entitys.SoundBlock>() {
                 new Entitys.SoundBlock() { Content="请", Volume=10, Voice="aimei", Rate=1 },
@@ -35,12 +35,32 @@ namespace TTSVoice.Proxy
             });
         }
 
+        /// <summary>
+        /// 就餐
+        /// </summary>
+        /// <param name="queueNum"></param>
+        public void CallRepastNumeric(string queueNum)
+        {
+            SFSpeech.AddBlocks(new List<Entitys.SoundBlock>() {
+                new Entitys.SoundBlock() { Content="哈哈哈", Volume=10, Voice="aimei", Rate=1 },
+                new Entitys.SoundBlock() { Content=queueNum.ToString(), Volume=10, Voice="aimei", Rate=3 },
+                new Entitys.SoundBlock() { Content=queueNum+"号顾客 ", Volume=10, Voice="aimei", Rate=5 }
+
+            });
+        }
+        
+
         public void CallWaiter(int tableNum)
         {
             throw new NotImplementedException();
         }
 
         public void LeaveTableNumeric(int tableNum)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CallTableNumeric(int tableNum)
         {
             throw new NotImplementedException();
         }

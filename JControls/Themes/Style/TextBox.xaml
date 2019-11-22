@@ -33,9 +33,9 @@
                         <Trigger Property="Text" Value="{x:Null}">
                             <Setter TargetName="Tb" Property="Visibility" Value="Visible" />
                         </Trigger>
-                        <Trigger Property="Text" Value="">
+                       <Trigger Property="Text" Value="">
                             <Setter TargetName="Tb" Property="Visibility" Value="Visible" />
-                        </Trigger>
+                        </Trigger> 
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />

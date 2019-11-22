@@ -22,19 +22,20 @@ namespace JControls
         {
             var btn = (Button)sender;
             var btnString = btn.Tag.ToString();
-            if (btnString == "删除" && InputTextBox.Text.Length != 0)
-                InputTextBox.Text = InputTextBox.Text.Substring(0, InputTextBox.Text.Length - 1);
-            else if (btnString == "清除")
-                InputTextBox.Text = "";
-            else
+            if (btnString != "清除" && btnString != "删除")
             {
                 InputTextBox.Text = InputTextBox.Text + btnString;
             }
+            else if (btnString == "删除" && InputTextBox.Text.Length != 0)
+                InputTextBox.Text = InputTextBox.Text.Substring(0, InputTextBox.Text.Length - 1);
+            else if (btnString == "清除")
+                InputTextBox.Text = "";
         }
 
         private void LineUp_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            OnLineUp?.Invoke(InputString);
+            if (InputTextBox.Text != "")
+                OnLineUp?.Invoke(InputString);
         }
     }
 }

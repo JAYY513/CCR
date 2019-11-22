@@ -131,7 +131,7 @@
                                             Focusable="False" />
                             <ContentPresenter  RecognizesAccessKey="True" />
                             <Border Width="21" Height="21" Name="bd" Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(assist:BackgroundAP.Background)}" CornerRadius="12" Margin="-1 -12 1 12">
-                                <TextBlock HorizontalAlignment="Center" Name="tb" FontSize="13" VerticalAlignment="Center" Foreground="White">1</TextBlock>
+                                <TextBlock HorizontalAlignment="Center" Name="tb" FontSize="13" VerticalAlignment="Center" Foreground="White" Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(assist:ControlAttachProperty.String)}"></TextBlock>
                             </Border>
                         </StackPanel>
                     </Grid>

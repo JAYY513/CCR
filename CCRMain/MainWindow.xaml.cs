@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using TTSHelper.TTSAPI;
 
@@ -18,6 +19,31 @@ namespace CCRMain
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Task.Factory.StartNew(() =>
+            {
+                var image = LoginApi.GetCodeUrlStream();
+
+                this.Dispatcher.Invoke(() =>
+                {
+                    try
+                    {
+                        BitmapImage bitmapImage = new BitmapImage();
+                        bitmapImage.BeginInit();
+                        bitmapImage.StreamSource = image;
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.EndInit();
+                        codeImg.Source = bitmapImage;
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                });
+            });
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -28,20 +54,21 @@ namespace CCRMain
             var code = this.code.Text;
             if(LoginApi.Login(user, employeeAccount, pwd, code))
             {
-                Thread.Sleep(100);
+                CallNumber callNumber = new CallNumber
+                {
+                    DataContext = ViewModels.ViewModelLoctor.CallNumberViewModel
+                };
+                callNumber.Show();
+                this.Close();
                 ViewModels.ViewModelLoctor.CallNumberViewModel.AddTableModels(SendData.SendData.TableQuery());
                 Thread.Sleep(100);
-                ViewModels.ViewModelLoctor.CallNumberViewModel.RefreshLineUpGroup(TableStatusApi.QueryLineUp<LineUpGroup>("1-4"));
+                ViewModels.ViewModelLoctor.CallNumberViewModel.RefreshLineUpGroup(TableStatusApi.QueryLineUp<LineUpGroup>("1-4"),0);
             }
          }
 
         private void CallNumber_Click(object sender, RoutedEventArgs e)
         {
-            CallNumber callNumber = new CallNumber
-            {
-                DataContext = ViewModels.ViewModelLoctor.CallNumberViewModel
-            };
-            callNumber.Show();
+           
         }
 
         private void RefreshCodeClick(object sender, RoutedEventArgs e)
@@ -59,6 +86,31 @@ namespace CCRMain
                         bitmapImage.StreamSource = image;
                         bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                         bitmapImage.EndInit();
+                        //codeImg.Source = bitmapImage;
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                });
+            });
+        }
+
+        private void codeImg_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Task.Factory.StartNew(() =>
+            {
+                var image = LoginApi.GetCodeUrlStream();
+
+                this.Dispatcher.Invoke(() =>
+                {
+                    try
+                    {
+                        BitmapImage bitmapImage = new BitmapImage();
+                        bitmapImage.BeginInit();
+                        bitmapImage.StreamSource = image;
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.EndInit();
+                       
                         codeImg.Source = bitmapImage;
                     }
                     catch (Exception ex)

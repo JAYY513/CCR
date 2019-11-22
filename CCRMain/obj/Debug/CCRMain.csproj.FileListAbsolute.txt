@@ -85,3 +85,7 @@ D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\TTSHelper.pdb
 D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\Dos.Common.dll
 D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\Dos.Common.xml
 D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\JLib.dll
+D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\TTSVoice.dll
+D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\NAudio.dll
+D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\TTSVoice.pdb
+D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\NAudio.xml

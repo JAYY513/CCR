@@ -3,6 +3,7 @@ using JLib.Commands;
 using JLib.MVVM;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using TTSHelper.TTSAPI;
 
@@ -18,7 +19,6 @@ namespace CCRMain.ViewModels
         private bool _isSelectedUsingTables;
         private bool _isSelectedUsingTables2;
         private ObservableCollection<TableModel> _selectedtableModels = new ObservableCollection<TableModel>();
-        private ObservableCollection<TableGroupModel> _tableGroupModel = new ObservableCollection<TableGroupModel>();
         private ObservableCollection<TableModel> tableModels = new ObservableCollection<TableModel>();
 
         public CallNumberViewModel()
@@ -134,12 +134,6 @@ namespace CCRMain.ViewModels
             set => SetProperty(ref _selectedtableModels, value);
         }
 
-        public ObservableCollection<TableGroupModel> TableGroupModels
-        {
-            get => _tableGroupModel;
-            set => SetProperty(ref _tableGroupModel, value);
-        }
-
         public ObservableCollection<TableModel> TableModels
         {
             get => tableModels;
@@ -150,13 +144,28 @@ namespace CCRMain.ViewModels
         {           
             lock (lockObj)
             {
-                if (tableModels == null) return;
-                TableGroupModels.Clear();
                 TableModels.Clear();
-                foreach (var item in tableModels)
+                if (tableModels != null)
                 {
-                    //AddTableByTableType(item);
-                    TableModels.Add(item);
+                    foreach (var item in tableModels)
+                    {
+                        //AddTableByTableType(item);
+                        TableModels.Add(item);
+                    }
+
+                    if (IsSelectedAllTables)
+                    {
+                        EmptyCount = tableModels.Where(i => i.status == 1).Count().ToString();
+                        UsingCount = tableModels.Where(i => i.status == 11 || i.status == 31 || i.status == 21).Count().ToString();
+                    }
+                    else if (IsSelectedEmptyAllTables)
+                    {
+                        EmptyCount = tableModels.Count().ToString();
+                    }
+                    else
+                    {
+                        UsingCount = tableModels.Count().ToString();
+                    }
                 }
             }
         }
@@ -164,8 +173,8 @@ namespace CCRMain.ViewModels
         private ObservableCollection<LineUpGroup> lineUpGroups = new ObservableCollection<LineUpGroup>()
         {
             new LineUpGroup() { Name = "1-4人"/*,   TableSize="1-4"*/ },
-            new LineUpGroup() { Name = "5-8人"/*,   TableSize="5-8"*/ },
-            new LineUpGroup() { Name = "9人以上"/*, TableSize="9"*/},
+            new LineUpGroup() { Name = "5-7人"/*,   TableSize="5-8"*/ },
+            new LineUpGroup() { Name = "8-20人"/*, TableSize="9"*/},
             new LineUpGroup() { Name = "全部"/*,    TableSize="全部"*/}
         };
         public ObservableCollection< LineUpGroup> LineUpGroups
@@ -183,42 +192,95 @@ namespace CCRMain.ViewModels
             }
         }
 
-        public void RefreshLineUpGroup(LineUpGroup lineUpGroup)
+        private string _emptyCount;
+        public string EmptyCount
         {
+            get => _emptyCount;
+            set => SetProperty(ref _emptyCount, value);
+        }
+        private string _usingCount;
+        public string UsingCount
+        {
+            get => _usingCount;
+            set => SetProperty(ref _usingCount, value);
+        }
+
+        public void RefreshLineUpGroup(LineUpGroup lineUpGroup,int selectedIndex)
+        {
+            int tempIndex = TabControlSelectedIndex;
             if (lineUpGroup == null) return;
-            SelectedLineUpGroups = null;
+            //SelectedLineUpGroups = null;
             if (lineUpGroup.data.Count == 0) return;
-            if (lineUpGroup.data[0].tableSize == "1-4")
+            if (selectedIndex == 0)
             {
                 lineUpGroup.Name = "1-4人";
                 LineUpGroups[0] = lineUpGroup;
+                UpdateAllCount();
             }
-            else if (lineUpGroup.data[0].tableSize == "5-8")
+            else if (selectedIndex == 1)
             {
-                lineUpGroup.Name = "5-8人";
+                lineUpGroup.Name = "5-7人";
                 LineUpGroups[1] = lineUpGroup;
+                UpdateAllCount();
             }
-            else if (lineUpGroup.data[0].tableSize == "9")
+            else if (selectedIndex == 2)
             {
-                lineUpGroup.Name = "9人";
+                lineUpGroup.Name = "8-20人";
                 LineUpGroups[2] = lineUpGroup;
+                UpdateAllCount();
             }
-            SelectedLineUpGroups = lineUpGroup;
+            else if (selectedIndex == 3)
+            {
+                lineUpGroup.Name = "全部";
+                LineUpGroups[3] = lineUpGroup;
+                LineUpGroups[0].total = lineUpGroup.data.Where(A => A.tableSize == "1-4").Count().ToString();
+                LineUpGroups[0].data = new ObservableCollection<LineUpItem>(lineUpGroup.data.Where(A => A.tableSize == "1-4"));
+                LineUpGroups[1].total = lineUpGroup.data.Where(A => A.tableSize == "5-7").Count().ToString();
+                LineUpGroups[1].data = new ObservableCollection<LineUpItem>(lineUpGroup.data.Where(A => A.tableSize == "5-7"));
+                LineUpGroups[2].total = lineUpGroup.data.Where(A => A.tableSize == "8-20").Count().ToString();
+                LineUpGroups[2].data = new ObservableCollection<LineUpItem>(lineUpGroup.data.Where(A => A.tableSize == "8-20"));
+            }
+            SelectedLineUpGroups = LineUpGroups[tempIndex];
+        }
+
+        private void UpdateAllCount()
+        {
+            LineUpGroups[3].total = (Convert.ToInt32(LineUpGroups[0].total) + Convert.ToInt32(LineUpGroups[1].total) + Convert.ToInt32(LineUpGroups[2].total)).ToString();
         }
 
         public DelegateCommand<LineUpItem> LineUpItemCommand => new DelegateCommand<LineUpItem>(LineUpItemExecute);
-
+        
         private void LineUpItemExecute(LineUpItem lineUpItem)
-        {
-            TableStatusApi.ChangeLineUp(lineUpItem.id.ToString(), lineUpItem.lineUpNumber.ToString(), "1");
+        {            
+            Tools.SpeechAPI.SFSpeechProxy.CallTableNumeric(lineUpItem.lineUpNumber.ToString());
+            TableStatusApi.ChangeLineUp(lineUpItem.id.ToString(), "1");
         }
 
+        public DelegateCommand<LineUpItem> RepastItemCommand => new DelegateCommand<LineUpItem>(RepastItemExecute);
+
+        private void RepastItemExecute(LineUpItem lineUpItem)
+        {
+            Tools.SpeechAPI.SFSpeechProxy.CallTableNumeric(lineUpItem.lineUpNumber.ToString());
+            TableStatusApi.ChangeLineUp(lineUpItem.id.ToString(), "2");
+        }
+        
         public DelegateCommand<LineUpItem> DequeueItemCommand => new DelegateCommand<LineUpItem>(DequeueItemExecute);
 
         private void DequeueItemExecute(LineUpItem lineUpItem)
         {
-            TableStatusApi.ChangeLineUp(lineUpItem.id.ToString(), lineUpItem.lineUpNumber.ToString(), "3");
+            TableStatusApi.ChangeLineUp(lineUpItem.id.ToString(), "3");            
+            var item = TableStatusApi.QueryLineUp<LineUpGroup>(TabControlSelectedIndex == 0 ? "1-4" : TabControlSelectedIndex == 1 ? "5-7" : TabControlSelectedIndex == 2 ? "8-20" : "");
+            RefreshLineUpGroup(item, TabControlSelectedIndex);
+
         }
+
+        private int _tabControlSelectedIndex = 3;
+        public int TabControlSelectedIndex
+        {
+            get => _tabControlSelectedIndex;
+            set => SetProperty(ref _tabControlSelectedIndex, value);
+        }
+
 
 
         private object lockObj = new object(); 
@@ -267,11 +329,6 @@ namespace CCRMain.ViewModels
             {
                 TableModels.Add(new TableModel() { addTime = "18:30", amount = "3人", areaName = "￥3000", name = ("T" + i.ToString("000")) });
             }
-
-            TableGroupModels.Add(new TableGroupModel() { Name = "1-4人", Headcount = "20", TableModels = TableModels });
-            TableGroupModels.Add(new TableGroupModel() { Name = "1-4人", Headcount = "20", TableModels = TableModels });
-            TableGroupModels.Add(new TableGroupModel() { Name = "1-4人", Headcount = "20", TableModels = TableModels });
-            TableGroupModels.Add(new TableGroupModel() { Name = "1-4人", Headcount = "20", TableModels = TableModels });
         }
     }
 }
