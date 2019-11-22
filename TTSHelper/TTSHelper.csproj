@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dos.Common">
-      <HintPath>..\..\..\..\..\..\LJJ\Source\Dos.Common 2\bin\Debug\Dos.Common.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -54,6 +51,7 @@
     <Compile Include="HttpBase.cs" />
     <Compile Include="HttpHelper.cs" />
     <Compile Include="JsonHelper.cs" />
+    <Compile Include="MyResponse.cs" />
     <Compile Include="TTSAPI\LoginApi.cs" />
     <Compile Include="MacCodeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +59,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dos.Common 2\Dos.Common.csproj">
+      <Project>{b9fef835-ec96-4314-a77d-fffea7c43bee}</Project>
+      <Name>Dos.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

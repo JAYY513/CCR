@@ -1,5 +1,7 @@
 ﻿using CCRMain.Models;
+using JLib.Commands;
 using JLib.MVVM;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using TTSHelper.TTSAPI;
@@ -47,6 +49,8 @@ namespace CCRMain.ViewModels
             {
                 if (SetProperty(ref _isSelectedAllTablesType, value) && value)
                 {
+                    IsSelectedBoxTablesType = false;
+                    IsSelectedHallTablesType = false;
                     var t1 = new Task<ObservableCollection<TableModel>>(() => CCRMain.SendData.SendData.TableQuery());
                     t1.ContinueWith(preT => Execute.OnExecute(() => AddTableModels(t1.Result)));
                     t1.Start();
@@ -61,6 +65,8 @@ namespace CCRMain.ViewModels
             {
                 if (SetProperty(ref _isSelectedBoxTablesType, value) && value)
                 {
+                    IsSelectedAllTablesType = false;
+                    IsSelectedHallTablesType = false;
                     var t1 = new Task<ObservableCollection<TableModel>>(() => CCRMain.SendData.SendData.TableQuery());
                     t1.ContinueWith(preT => Execute.OnExecute(() => AddTableModels(t1.Result)));
                     t1.Start();
@@ -91,6 +97,8 @@ namespace CCRMain.ViewModels
             {
                 if (SetProperty(ref _isSelectedHallTablesType, value) && value)
                 {
+                    IsSelectedAllTablesType = false;
+                    IsSelectedBoxTablesType = false;
                     var t1 = new Task<ObservableCollection<TableModel>>(() => CCRMain.SendData.SendData.TableQuery());
                     t1.ContinueWith(preT => Execute.OnExecute(()=> AddTableModels(t1.Result)));
                     t1.Start();
@@ -139,8 +147,7 @@ namespace CCRMain.ViewModels
         }
 
         public void AddTableModels(ObservableCollection<TableModel> tableModels)
-        {
-           
+        {           
             lock (lockObj)
             {
                 if (tableModels == null) return;
@@ -148,15 +155,71 @@ namespace CCRMain.ViewModels
                 TableModels.Clear();
                 foreach (var item in tableModels)
                 {
-                    AddTableByTableType(item);
-                    // TableModels.Add(item);
+                    //AddTableByTableType(item);
+                    TableModels.Add(item);
                 }
-                TableGroupModels.Add(new TableGroupModel() { Name = "1-4人", Headcount = "20", TableModels = TableModels });
-                TableGroupModels.Add(new TableGroupModel() { Name = "5-8人", Headcount = "20", TableModels = TableModels });
-                TableGroupModels.Add(new TableGroupModel() { Name = "1-4人", Headcount = "20", TableModels = TableModels });
-                TableGroupModels.Add(new TableGroupModel() { Name = "1-4人", Headcount = "20", TableModels = TableModels });
             }
         }
+
+        private ObservableCollection<LineUpGroup> lineUpGroups = new ObservableCollection<LineUpGroup>()
+        {
+            new LineUpGroup() { Name = "1-4人"/*,   TableSize="1-4"*/ },
+            new LineUpGroup() { Name = "5-8人"/*,   TableSize="5-8"*/ },
+            new LineUpGroup() { Name = "9人以上"/*, TableSize="9"*/},
+            new LineUpGroup() { Name = "全部"/*,    TableSize="全部"*/}
+        };
+        public ObservableCollection< LineUpGroup> LineUpGroups
+        {
+            get => lineUpGroups;
+            set => SetProperty(ref lineUpGroups, value);
+        }
+
+        private LineUpGroup selectedLineUpGroups;
+        public LineUpGroup SelectedLineUpGroups
+        {
+            get => selectedLineUpGroups;
+            set { SetProperty(ref selectedLineUpGroups, value);
+            
+            }
+        }
+
+        public void RefreshLineUpGroup(LineUpGroup lineUpGroup)
+        {
+            if (lineUpGroup == null) return;
+            SelectedLineUpGroups = null;
+            if (lineUpGroup.data.Count == 0) return;
+            if (lineUpGroup.data[0].tableSize == "1-4")
+            {
+                lineUpGroup.Name = "1-4人";
+                LineUpGroups[0] = lineUpGroup;
+            }
+            else if (lineUpGroup.data[0].tableSize == "5-8")
+            {
+                lineUpGroup.Name = "5-8人";
+                LineUpGroups[1] = lineUpGroup;
+            }
+            else if (lineUpGroup.data[0].tableSize == "9")
+            {
+                lineUpGroup.Name = "9人";
+                LineUpGroups[2] = lineUpGroup;
+            }
+            SelectedLineUpGroups = lineUpGroup;
+        }
+
+        public DelegateCommand<LineUpItem> LineUpItemCommand => new DelegateCommand<LineUpItem>(LineUpItemExecute);
+
+        private void LineUpItemExecute(LineUpItem lineUpItem)
+        {
+            TableStatusApi.ChangeLineUp(lineUpItem.id.ToString(), lineUpItem.lineUpNumber.ToString(), "1");
+        }
+
+        public DelegateCommand<LineUpItem> DequeueItemCommand => new DelegateCommand<LineUpItem>(DequeueItemExecute);
+
+        private void DequeueItemExecute(LineUpItem lineUpItem)
+        {
+            TableStatusApi.ChangeLineUp(lineUpItem.id.ToString(), lineUpItem.lineUpNumber.ToString(), "3");
+        }
+
 
         private object lockObj = new object(); 
         public ObservableCollection<TableModel> GetTableModels()

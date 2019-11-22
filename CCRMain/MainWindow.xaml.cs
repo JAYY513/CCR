@@ -26,12 +26,14 @@ namespace CCRMain
             var employeeAccount = this.employeeAccount.Text;
             var pwd = this.pwd.Text;
             var code = this.code.Text;
-            LoginApi.Login(user, employeeAccount, pwd, code);
-
-            Thread.Sleep(1000);
-
-            ViewModels.ViewModelLoctor.CallNumberViewModel.AddTableModels(TableStatusApi.TableQuery<ObservableCollection<TableModel>>());
-        }
+            if(LoginApi.Login(user, employeeAccount, pwd, code))
+            {
+                Thread.Sleep(100);
+                ViewModels.ViewModelLoctor.CallNumberViewModel.AddTableModels(SendData.SendData.TableQuery());
+                Thread.Sleep(100);
+                ViewModels.ViewModelLoctor.CallNumberViewModel.RefreshLineUpGroup(TableStatusApi.QueryLineUp<LineUpGroup>("1-4"));
+            }
+         }
 
         private void CallNumber_Click(object sender, RoutedEventArgs e)
         {

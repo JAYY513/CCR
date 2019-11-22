@@ -80,6 +80,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Execute.cs" />
+    <Compile Include="Models\LineUpGroup.cs" />
+    <Compile Include="Models\LineUpItem.cs" />
     <Compile Include="Models\TableGroupModel.cs" />
     <Compile Include="Models\TableLineUp.cs" />
     <Compile Include="Models\TableModel.cs" />
@@ -142,6 +144,10 @@
     <Resource Include="Resource\预约.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dos.Common 2\Dos.Common.csproj">
+      <Project>{b9fef835-ec96-4314-a77d-fffea7c43bee}</Project>
+      <Name>Dos.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JControls\JControls.csproj">
       <Project>{eea67114-1198-41cc-a7ea-3288623f141a}</Project>
       <Name>JControls</Name>

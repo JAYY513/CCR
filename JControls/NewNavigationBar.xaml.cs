@@ -59,7 +59,11 @@ namespace JControls
 
         public void SetSelectedItem(int pageIndex = 0)
         {
-            if (tempItemsSourceList.Count == 0) return;
+            if (tempItemsSourceList.Count == 0)
+            {
+                SelectedItem = null;
+                return; 
+            }
             List<List<object>> lists = new List<List<object>>();
             for (int i = 0; i < tempItemsSourceList.Count; i++)
             {
@@ -76,9 +80,13 @@ namespace JControls
 
         private static void OnItemSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue == null) return;
             var newNavigationBar = (NewNavigationBar)d;
             newNavigationBar.tempItemsSourceList.Clear();
+            if (e.NewValue == null)
+            {
+                newNavigationBar.SelectedItem = null;
+                return;
+            }
             var itemsSource = ((IEnumerable)e.NewValue).GetEnumerator();
             for (int i = 0; itemsSource.MoveNext(); i++)
             {

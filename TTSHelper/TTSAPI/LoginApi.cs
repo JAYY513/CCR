@@ -9,7 +9,7 @@ namespace TTSHelper.TTSAPI
 {
     public class LoginApi
     {
-        public static void Login(string user, string employeeAccount, string pwd, string code)
+        public static bool Login(string user, string employeeAccount, string pwd, string code)
         {
             try
             {
@@ -42,14 +42,17 @@ namespace TTSHelper.TTSAPI
                     {
                         HttpBase.Authorization = json["data"].ToString();
                         MessageBox.Show("登录成功");
+                        return true;
                     }
                 }
+                return false;
             }
             catch (WebException ex)
             {
                 MessageBox.Show(ex.Message);
                 if(ex.Response!= null)
                 MessageBox.Show(new StreamReader(ex.Response.GetResponseStream()).ReadToEnd());
+                return false;
             }
         }
 

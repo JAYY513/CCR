@@ -197,18 +197,17 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="0.75*" MinHeight="200"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TabControl ItemsSource="{Binding TableGroupModels}" SelectedIndex="0" DisplayMemberPath="Name" Style="{StaticResource TabControl.Stretch.Style}">
-
+                <TabControl ItemsSource="{Binding LineUpGroups}" SelectedItem="{Binding SelectedLineUpGroups}" SelectedIndex="0" SelectionChanged="TabControl_SelectionChanged" DisplayMemberPath="Name" Style="{StaticResource TabControl.Stretch.Style}">
                     <TabControl.Resources>
                         <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource RightTop.TotalPeople.TabItem.Style1}" >
                             <Setter Property="Height" Value="69"/>
-                            <Setter Property="Width" Value="auto"/>
+                            <Setter Property="Width" Value="auto"/>                            
                         </Style>
                     </TabControl.Resources>
                     <TabControl.ContentTemplate>
                         <DataTemplate>
                             <DockPanel>
-                                <jcontrols:NewNavigationBar Name="NGB" VerticalAlignment="Center" Background="Red" Height="33" Margin="0 0 0 21" MaxPageSize="4" ItemsSource="{Binding TableModels}" HorizontalAlignment="Center" DockPanel.Dock="Bottom" ></jcontrols:NewNavigationBar>
+                                <jcontrols:NewNavigationBar Name="NGB" VerticalAlignment="Center" Background="Red" Height="33" Margin="0 0 0 21" MaxPageSize="4" ItemsSource="{Binding data}" HorizontalAlignment="Center" DockPanel.Dock="Bottom" ></jcontrols:NewNavigationBar>
                                 <ListBox Style="{StaticResource ListBox.ItemHaveBorder.Style1}" ItemsSource="{Binding ElementName=NGB,Path=SelectedItem}" HorizontalContentAlignment="Stretch" BorderThickness="0">
                                     <ListBox.ItemContainerStyle>
                                         <Style TargetType="ListBoxItem">
@@ -243,11 +242,11 @@
                                         <DataTemplate DataType="{x:Type models:TableModel}">
                                             <Grid>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{Binding name}" Margin="0 0 30 0"></TextBlock>
+                                                    <TextBlock Text="{Binding lineUpNumber}" Margin="0 0 30 0"></TextBlock>
                                                     <TextBlock Text="{Binding Headcount}"></TextBlock>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <Button Style="{StaticResource IconWithFont.Button.Style1}" Content="叫号" Margin="0 0 12 0" RenderOptions.BitmapScalingMode="Unspecified">
+                                                    <Button Command="{Binding Source={x:Static viewModel:ViewModelLoctor.CallNumberViewModel},Path=LineUpItemCommand}" CommandParameter="{Binding}" Style="{StaticResource IconWithFont.Button.Style1}" Content="叫号" Margin="0 0 12 0" RenderOptions.BitmapScalingMode="Unspecified">
                                                         <Button.Background>
                                                             <ImageBrush ImageSource="/CCRMain;component/Resource/叫号.png" />
                                                         </Button.Background>
@@ -257,7 +256,7 @@
                                                             <ImageBrush ImageSource="/CCRMain;component/Resource/就餐.png" />
                                                         </Button.Background>
                                                     </Button>
-                                                    <Button Style="{StaticResource IconWithFont.Button.Style1}" Content="过号" RenderOptions.BitmapScalingMode="Unspecified">
+                                                    <Button Command="{Binding Source={x:Static viewModel:ViewModelLoctor.CallNumberViewModel},Path=DequeueItemCommand}" CommandParameter="{Binding}" Style="{StaticResource IconWithFont.Button.Style1}" Content="过号" RenderOptions.BitmapScalingMode="Unspecified">
                                                         <Button.Background>
                                                             <ImageBrush ImageSource="/CCRMain;component/Resource/过号.png" />
                                                         </Button.Background>

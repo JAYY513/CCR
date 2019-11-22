@@ -1,10 +1,12 @@
 ﻿using CCRMain.Models;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Controls;
 using TTSHelper.TTSAPI;
 
 namespace CCRMain.Views
 {
+ 
     /// <summary>
     /// CallNumber.xaml 的交互逻辑
     /// </summary>
@@ -28,6 +30,7 @@ namespace CCRMain.Views
 
         private void Lb_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+
         }
 
         private void CallNumber_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -36,7 +39,23 @@ namespace CCRMain.Views
 
         private void nkb_OnLineUp(string number)
         {
-           var A = TableStatusApi.TableLineUp<TableLineUp>(number);
+            TableStatusApi2.TryTableLineUp(number, out TableLineUp tableLineUp, out _);
+        }
+
+        private void TabControl_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+        
+        }
+
+        int tempSelectedIndex = -1;
+        private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            TabControl tabControl = (TabControl)sender;
+            var selectedIndex = tabControl.SelectedIndex;
+            if (selectedIndex == -1) return;
+            if (tempSelectedIndex == selectedIndex) return;
+            tempSelectedIndex = selectedIndex;
+            ViewModels.ViewModelLoctor.CallNumberViewModel.RefreshLineUpGroup(TableStatusApi.QueryLineUp<LineUpGroup>(selectedIndex == 0 ? "1-4" : selectedIndex == 1 ? "5-8" : selectedIndex == 2 ? "8-20" : "全部"));
         }
     }
 }

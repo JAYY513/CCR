@@ -14,7 +14,10 @@ namespace TTSHelper
         {
             return (JObject)JsonConvert.DeserializeObject(result);
         }
-
+        public static T ToJObject<T>(this string result)
+        {
+            return JsonConvert.DeserializeObject<T>(result);
+        }
         /// <summary>
         /// 将对象序列化为JSON格式
         /// </summary>

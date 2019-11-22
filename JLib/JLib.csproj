@@ -55,6 +55,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Commands\DelegateCommandBase.cs" />
+    <Compile Include="Commands\DelegateCommand{T}.cs" />
+    <Compile Include="Commands\IActiveAware.cs" />
+    <Compile Include="Commands\PropertyObserver.cs" />
+    <Compile Include="Commands\PropertyObserverNode.cs" />
     <Compile Include="MVVM\BindableBase.CS" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

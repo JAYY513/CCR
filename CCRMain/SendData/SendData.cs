@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using TTSHelper;
 using TTSHelper.TTSAPI;
 
 namespace CCRMain.SendData
@@ -15,7 +17,8 @@ namespace CCRMain.SendData
         public static ObservableCollection<TableModel> TableQuery()
         {
             var status = ViewModels.ViewModelLoctor.CallNumberViewModel.IsSelectedAllTables ? "0" : ViewModels.ViewModelLoctor.CallNumberViewModel.IsSelectedEmptyAllTables ? "1" : "11";
-            return TableStatusApi.TableQuery<ObservableCollection<TableModel>>(status);
+            var type = ViewModels.ViewModelLoctor.CallNumberViewModel.IsSelectedAllTablesType ? "" : ViewModels.ViewModelLoctor.CallNumberViewModel.IsSelectedBoxTablesType ? "包厢" : "大厅";
+            return TableStatusApi2.TryTableQuery(out _, out ObservableCollection<TableModel> tableModels, status, type) == ResponseStatus.SUCCESS ? tableModels : null;
         }
     }
 }
