@@ -41,12 +41,6 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\..\..\LJJ\Source\Dos.Common 2\bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="MaterialDesignColors">
-      <HintPath>..\..\..\..\LJJ\Source\MaterialDesignInXamlToolkit-master\MaterialDesignThemes.Wpf\bin\Debug\net45\MaterialDesignColors.dll</HintPath>
-    </Reference>
-    <Reference Include="MaterialDesignThemes.Wpf">
-      <HintPath>..\..\..\..\LJJ\Source\MaterialDesignInXamlToolkit-master\MaterialDesignThemes.Wpf\bin\Debug\net45\MaterialDesignThemes.Wpf.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -156,6 +150,14 @@
     <ProjectReference Include="..\JLib\JLib.csproj">
       <Project>{c2839ebb-eb9c-4d01-bbfb-a5b15fa871a8}</Project>
       <Name>JLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MaterialDesignInXamlToolkit-master\MaterialDesignColors.Wpf\MaterialDesignColors.Wpf.csproj">
+      <Project>{6cb897c5-c018-4b7d-975d-dab1ff148d5a}</Project>
+      <Name>MaterialDesignColors.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MaterialDesignInXamlToolkit-master\MaterialDesignThemes.Wpf\MaterialDesignThemes.Wpf.csproj">
+      <Project>{1341d081-4f18-4c5d-a2b9-cf6e1ffc189c}</Project>
+      <Name>MaterialDesignThemes.Wpf</Name>
     </ProjectReference>
     <ProjectReference Include="..\TTSHelper\TTSHelper.csproj">
       <Project>{3258692d-3b5a-41bf-9846-267990e43542}</Project>

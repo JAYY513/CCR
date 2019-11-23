@@ -89,3 +89,5 @@ D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\TTSVoice.dll
 D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\NAudio.dll
 D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\TTSVoice.pdb
 D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\NAudio.xml
+D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\MaterialDesignColors.dll
+D:\work\local\CCRMain\Source\CCRMain\CCRMain\bin\Debug\MaterialDesignThemes.Wpf.dll
