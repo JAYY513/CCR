@@ -44,6 +44,21 @@ namespace CCRMain
                     }
                 });
             });
+
+            JLib.TimerEvent TimerEvent = new JLib.TimerEvent(new UIElement());
+            TimerEvent.OnStart += TimerEvent_OnStart;
+            TimerEvent.OnStop += TimerEvent_OnStop;
+            TimerEvent.Run(3000);
+        }
+
+        private void TimerEvent_OnStop()
+        {
+
+        }
+
+        private void TimerEvent_OnStart(int time)
+        {
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -77,6 +77,7 @@
     </Compile>
     <Compile Include="SafeObservableCollection.cs" />
     <Compile Include="Singleton\Singleton.cs" />
+    <Compile Include="TimerEvent.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

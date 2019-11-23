@@ -65,6 +65,7 @@
     <Compile Include="CalendarTime.xaml.cs">
       <DependentUpon>CalendarTime.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ScaleToParcentConvert.cs" />
     <Compile Include="DialogContent.cs" />
     <Compile Include="HeaderTextBox.xaml.cs">
       <DependentUpon>HeaderTextBox.xaml</DependentUpon>

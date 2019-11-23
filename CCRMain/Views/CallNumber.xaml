@@ -10,10 +10,12 @@
         d:DataContext="{d:DesignInstance Type={x:Type viewModel:CallNumberViewModel}}"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:jcontrols="clr-namespace:JControls;assembly=JControls"
+        xmlns:converters="clr-namespace:JControls.Converters;assembly=JControls"
         mc:Ignorable="d" Height="758" Width="1385" FontSize="17"
         Title="CallNumber" >
     <Window.Resources>
         <!--<Style TargetType="RadioButton" BasedOn="{StaticResource RadioButton.Style2}" ></Style>-->
+        <converters:ScaleToParcentConvert x:Key="ScaleToParcentConvert"></converters:ScaleToParcentConvert>
     </Window.Resources>
     <Grid >
         <Grid.ColumnDefinitions>
@@ -106,20 +108,21 @@
                                       
                                         <ContentPresenter Margin="{TemplateBinding Padding}"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                                     </wpf:Card>-->
+                                    <!--<Viewbox  Stretch="Fill">-->
                                     <Grid x:Name="gd">
-                                        
+                                        <Grid.RenderTransform>
+                                            <ScaleTransform CenterX="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Width,Converter={StaticResource ScaleToParcentConvert},ConverterParameter=0.5}" CenterY="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Height,Converter={StaticResource ScaleToParcentConvert},ConverterParameter=0.5}" ScaleX="1" ScaleY="1" x:Name="stf"></ScaleTransform>
+                                        </Grid.RenderTransform>
                                         <Border x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"
-                                        CornerRadius="{Binding Path=(wpf:ButtonAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                        Background="{TemplateBinding Background}"
-                                        
-                                        SnapsToDevicePixels="true"
-                                        Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(wpf:ShadowAssist.ShadowDepth), Converter={x:Static wpf:ShadowConverter.Instance}}">
-
+                                                CornerRadius="{Binding Path=(wpf:ButtonAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                                Background="{TemplateBinding Background}"                                        
+                                                SnapsToDevicePixels="true"
+                                                Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(wpf:ShadowAssist.ShadowDepth), Converter={x:Static wpf:ShadowConverter.Instance}}">
                                         </Border>
                                         <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
 
                                     </Grid>
-
+                                    <!--</Viewbox>-->
                                     <ControlTemplate.Triggers>
                                         <DataTrigger Binding="{Binding status}" Value="11">
                                             <Setter Property="Background" Value="#FF3D3D" />
@@ -136,29 +139,58 @@
                                         </Trigger>
                                         <Trigger Property="IsMouseOver" Value="true">
                                             <Setter Property="wpf:ShadowAssist.Darken" TargetName="border" Value="True" />
-                                            <Trigger.EnterActions>
-                                                <BeginStoryboard>
-                                                    <Storyboard Storyboard.TargetName="gd" Storyboard.TargetProperty="Margin">
-                                                        <ThicknessAnimation From="0 0 0 0" To="-6" BeginTime="00:00:00" Duration="00:00:0.2">
-                                                            <!--使用缓动函数-->
+                                            <Trigger.EnterActions>                                                
+                                                <BeginStoryboard>                                                    
+                                                    <Storyboard >
+                                                        <ThicknessAnimation From="0 0 0 0" To="-6" BeginTime="00:00:00" Duration="00:00:0.2" Storyboard.TargetName="gd" Storyboard.TargetProperty="Margin">
+                                                           <!--使用缓动函数-->
                                                             <ThicknessAnimation.EasingFunction>
                                                                 <!--设置缓动模式和振荡次数-->
                                                                 <PowerEase EasingMode="EaseOut"  Power="6"></PowerEase>                                                               
                                                             </ThicknessAnimation.EasingFunction>
                                                         </ThicknessAnimation>
+                                                        <!--<DoubleAnimation From="1" To="1.1" BeginTime="00:00:00" Duration="00:00:0.2" Storyboard.TargetName="stf" Storyboard.TargetProperty="ScaleX">
+                                                            --><!--使用缓动函数--><!--
+                                                            <DoubleAnimation.EasingFunction>
+                                                                --><!--设置缓动模式和振荡次数--><!--
+                                                                <PowerEase EasingMode="EaseOut"  Power="6"></PowerEase>
+                                                            </DoubleAnimation.EasingFunction>
+                                                        </DoubleAnimation>
+                                                        <DoubleAnimation From="1" To="1.1" BeginTime="00:00:00" Duration="00:00:0.2" Storyboard.TargetName="stf" Storyboard.TargetProperty="ScaleY">
+                                                            --><!--使用缓动函数--><!--
+                                                            <DoubleAnimation.EasingFunction>
+                                                                --><!--设置缓动模式和振荡次数--><!--
+                                                                <PowerEase EasingMode="EaseOut"  Power="6"></PowerEase>
+                                                            </DoubleAnimation.EasingFunction>
+                                                        </DoubleAnimation>-->
                                                     </Storyboard>
+                                                    
                                                 </BeginStoryboard>
                                             </Trigger.EnterActions>
                                             <Trigger.ExitActions>
                                                 <BeginStoryboard>
-                                                    <Storyboard Storyboard.TargetName="gd" Storyboard.TargetProperty="Margin">
-                                                        <ThicknessAnimation From="-6 -6 -6 -6" To="0 0 0 0" BeginTime="00:00:00" Duration="00:00:0.2" >
+                                                    <Storyboard >
+                                                        <ThicknessAnimation From="-6 -6 -6 -6" To="0 0 0 0" BeginTime="00:00:00" Duration="00:00:0.2" Storyboard.TargetName="gd" Storyboard.TargetProperty="Margin">
                                                             <!--使用缓动函数-->
                                                             <ThicknessAnimation.EasingFunction>
                                                                 <!--设置缓动模式和振荡次数-->
                                                                 <BackEase EasingMode="EaseOut"  Amplitude="1.5"></BackEase>
                                                             </ThicknessAnimation.EasingFunction>
                                                         </ThicknessAnimation>
+                                                        <!--<DoubleAnimation To="1" BeginTime="00:00:00" Duration="00:00:0.2" Storyboard.TargetName="stf" Storyboard.TargetProperty="ScaleX">
+                                                            --><!--使用缓动函数--><!--
+                                                            <DoubleAnimation.EasingFunction>
+                                                                --><!--设置缓动模式和振荡次数--><!--
+                                                                <BackEase EasingMode="EaseOut"  Amplitude="1.5"></BackEase>
+                                                            </DoubleAnimation.EasingFunction>
+                                                        </DoubleAnimation>
+                                                        <DoubleAnimation To="1" BeginTime="00:00:00" Duration="00:00:0.2" Storyboard.TargetName="stf" Storyboard.TargetProperty="ScaleY">
+                                                            --><!--使用缓动函数--><!--
+                                                            <DoubleAnimation.EasingFunction>
+                                                                --><!--设置缓动模式和振荡次数--><!--
+                                                                <BackEase EasingMode="EaseOut"  Amplitude="1.5"></BackEase>
+                                                            </DoubleAnimation.EasingFunction>
+                                                        </DoubleAnimation>-->
                                                     </Storyboard>
                                                 </BeginStoryboard>
                                             </Trigger.ExitActions>
